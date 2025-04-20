@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 252 89% 60%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 332 89% 55%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 270 79% 63%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 240 8% 12%;
+    --muted-foreground: 240 8% 65%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 8% 12%;
+    --input: 240 8% 12%;
+    --ring: 240 8% 20%;
+    
+    --sidebar: 240 12% 8%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-accent: 252 89% 15%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    
+    --radius: 0.5rem;
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply font-sans antialiased bg-background text-foreground overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 10% 20%, rgba(var(--primary) / 0.03) 0%, transparent 20%),
+      radial-gradient(circle at 90% 80%, rgba(var(--secondary) / 0.03) 0%, transparent 20%),
+      radial-gradient(circle at 50% 50%, rgba(var(--accent) / 0.03) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+  
+  /* Glassmorphism Classes */
+  .glassmorphism {
+    @apply bg-white/10 backdrop-blur-xl border border-white/15;
+  }
+  
+  .glassmorphism-dark {
+    @apply bg-gray-900/70 backdrop-blur-xl border border-white/5;
+  }
+  
+  /* Gradient Text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary;
+  }
+  
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-white/5 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/20 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-white/30;
+  }
+  
+  /* Blur Background */
+  .blur-bg {
+    @apply absolute w-[500px] h-[500px] rounded-full filter blur-[120px] opacity-15 z-[-1];
+  }
+  
+  /* Gradient Background */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary via-accent to-secondary bg-[length:400%_400%] animate-gradient;
+  }
+  
+  /* Gradient Border */
+  .gradient-border {
+    @apply relative;
+  }
+  
+  .gradient-border::after {
+    content: "";
+    @apply absolute inset-0 rounded-[inherit] p-[1px] bg-gradient-to-r from-primary to-secondary pointer-events-none;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-gradient {
+  animation: gradient 15s ease infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-slide-right {
+  animation: slideRight 0.5s ease-out forwards;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+.animate-slide-left {
+  animation: slideLeft 0.5s ease-out forwards;
+}
